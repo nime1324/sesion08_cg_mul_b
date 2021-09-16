@@ -12,28 +12,29 @@
 <script src="js/three.min.js"></script>
 <script>
 	var WIDTH = window.innerWidth;
-	var HEIGHT = window.innerHeight;
+	var HEIGHT = window.innerHeight; 	/* se define el ancho y el largo de la pantalla */
+
 
 	var renderer = new THREE.WebGLRenderer({antialias:true});
 	renderer.setSize(WIDTH, HEIGHT);
 	renderer.setClearColor(0xDDDDDD, 1);
-	document.body.appendChild(renderer.domElement);
+	document.body.appendChild(renderer.domElement); /* se definen as variables render por medio del renderizador webgl y en antialias activo para suavisar los bordes del objeto aca tambin se define el tamanio del objeto a renderizar y el color*/
 
-	var scene = new THREE.Scene();
+	var scene = new THREE.Scene();/*se crea la escena */
 
 	var camera = new THREE.PerspectiveCamera(70, WIDTH/HEIGHT);
 	camera.position.z = 50;
-	scene.add(camera);
+	scene.add(camera); /*se define la camara y la posicion de la camara, luego se agregra la camara a la escena*/ 
 
-	var boxGeometry = new THREE.BoxGeometry(10, 10, 10);
-	var basicMaterial = new THREE.MeshBasicMaterial({color: 0x0095DD});
-	var cube = new THREE.Mesh(boxGeometry, basicMaterial);
-	scene.add(cube);
-	cube.rotation.set(0.4, 0.2, 0);
+	var boxGeometry = new THREE.BoxGeometry(10, 10, 10);/* se crea el cubo*/
+	var basicMaterial = new THREE.MeshBasicMaterial({color: 0x0095DD}); /* se define el color y el material del que estara hecho el objeto, en este caso el cubo*/
+	var cube = new THREE.Mesh(boxGeometry, basicMaterial);/* se le agregan los parametros a la nueva variable que seria cube*/
+	scene.add(cube);/* una vez creado el cubo con todos los parametrs, se agrega a la escena*/
+	cube.rotation.set(0.4, 0.2, 0); /*se le agrega una rotacion al cubo*/
 
 	function render() {
 		requestAnimationFrame(render);
-		renderer.render(scene, camera);
+		renderer.render(scene, camera);/* se crea la funcion para renderizar todo lo que se ha creado implementando la escena y la camara*/
 	}
 	render();
 </script>
